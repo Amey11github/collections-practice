@@ -1,6 +1,6 @@
 import java.util.*;
 
-class StudentInnerClass implements Comparator<Student>
+class StudentInnerClass 
 {
 	private String name;
 	private Integer rollNo;
@@ -48,33 +48,29 @@ class StudentInnerClass implements Comparator<Student>
 		studentList.add(new StudentInnerClass("Varun",193,9846356902l,"varun634@gmail.com"));
       
 
-		Comparator<StudentInnerClass> sortByName=new Comparator<>();
+		class SortByName implements Comparator<StudentInnerClass>
 		{
            public int compare(StudentInnerClass o1,StudentInnerClass o2)
 			{
 				return o1.getName().compareTo(o2.getName());
 			}
-		};
+		}
 
-		Comparator<StudentInnerClass> sortByRollNo=new Comparator<>();
+		class SortByRollNo implements Comparator<StudentInnerClass>
 		{
            public int compare(StudentInnerClass o1,StudentInnerClass o2)
 			{
 				return o1.getRollNo().compareTo(o2.getRollNo());
 			}
-		};
+		}
         
-        
-		Collections.sort(studentList,sortByName);
+		Collections.sort(studentList,new SortByName());
 		System.out.println(studentList);
 		System.out.println("--------------------------------------------------------------------");
 
-
-		Collections.sort(studentList,sortByName);
+		Collections.sort(studentList,new SortByRollNo());
 		System.out.println(studentList);
 		System.out.println("---------------------------------------------------------------------");
-
-
 
 	}
 
